@@ -9,36 +9,12 @@ import numpy as np
 import pandas as pd
 import streamlit.components.v1 as components
 
-# Set page config and styling
+# Set page config
 st.set_page_config(
     layout="wide",
     page_title="MLP Training Visualization",
-    page_icon="🧠",
-    initial_sidebar_state="expanded",
-    menu_items={
-        'Get Help': None,
-        'Report a bug': None,
-        'About': None
-    }
+    page_icon="🧠"
 )
-
-# Apply custom CSS for theme-aware text colors
-st.markdown("""
-    <style>
-    /* Theme-aware text color */
-    .stMarkdown, .stText, .stCode {
-        color: var(--text-color);
-    }
-    /* Ensure text is visible in light theme */
-    [data-theme="light"] {
-        --text-color: #000000;
-    }
-    /* Ensure text is visible in dark theme */
-    [data-theme="dark"] {
-        --text-color: #FFFFFF;
-    }
-    </style>
-""", unsafe_allow_html=True)
 
 # Set random seed for reproducibility
 torch.manual_seed(42)
@@ -348,166 +324,13 @@ def display_layer_weights(layer, layer_name):
     df = pd.DataFrame(data, columns=col_labels, index=row_labels)
     return df
 
-# Force light theme and professional styling
-st.markdown("""
-    <style>
-        /* Force light theme */
-        [data-testid="stSidebar"], .stApp, .main > div {
-            background-color: #ffffff !important;
-        }
-        [data-testid="stToolbar"], #MainMenu, footer {
-            display: none;
-        }
-        
-        /* Professional styling */
-        .main > div {
-            padding: 2rem;
-        }
-        .stButton>button {
-            width: 100%;
-            background-color: #0097cc;
-            color: white;
-            font-weight: bold;
-            border-radius: 5px;
-            padding: 0.5rem 1rem;
-            border: none;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        .stButton>button:hover {
-            background-color: #007ba3;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transform: translateY(-1px);
-        }
-        
-        /* Typography */
-        h1 {
-            color: #1e3d59;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 0.5rem;
-            padding: 1rem;
-            background: linear-gradient(90deg, #f5f7fa 0%, #ffffff 100%);
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        h2 {
-            color: #1e3d59;
-            font-size: 1.8rem;
-            margin-top: 2rem;
-            padding: 0.5rem 0;
-            border-bottom: 2px solid #0097cc;
-        }
-        h3 {
-            color: #2c3e50;
-            font-size: 1.4rem;
-        }
-        
-        /* Components styling */
-        .stDataFrame {
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .status-box {
-            background: linear-gradient(145deg, #f8f9fa 0%, #ffffff 100%);
-            border-left: 4px solid #0097cc;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin: 1rem 0;
-        }
-        
-        /* Metrics styling */
-        .metric-value {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #0097cc;
-        }
-        .metric-label {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Plot styling */
-        .js-plotly-plot {
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border-radius: 8px;
-            padding: 1rem;
-            background: white !important;
-        }
-        
-        /* Sidebar enhancements */
-        [data-testid="stSidebar"] .sidebar-content {
-            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
-            padding: 1.5rem;
-            border-radius: 10px;
-        }
-        .sidebar h2 {
-            color: #1e3d59;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #0097cc;
-        }
-        .sidebar .stSlider {
-            margin-bottom: 2rem;
-            background-color: #f0f2f6;
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        
-        /* Progress bar */
-        .stProgress > div > div > div {
-            background-color: #0097cc;
-        }
-        
-        /* Container backgrounds */
-        .element-container, div.block-container {
-            background-color: #ffffff;
-        }
-        .stApp > header {
-            background-color: transparent !important;
-        }
-    </style>
-""", unsafe_allow_html=True)
+# Title and credits
+st.title('Interactive MLP Training Visualization')
+st.header('FashionMNIST Dataset')
+st.write('Created by Thi-Ngoc-Truc Nguyen and Hoang-Nguyen Vu')
 
-# Title and credits with enhanced styling
-st.markdown("""
-    <div style='text-align: center; padding: 2rem 0; background: linear-gradient(90deg, #f5f7fa 0%, #ffffff 100%); border-radius: 10px; margin-bottom: 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05);'>
-        <h1 style='margin-bottom: 0.5rem; color: #1e3d59;'>Interactive MLP Training Visualization</h1>
-        <h2 style='color: #0097cc; font-size: 1.8rem; border: none; margin-top: 0;'>FashionMNIST Dataset</h2>
-        <p style='color: #0097cc; font-size: 1.4rem; font-weight: bold; margin-top: 1rem;'>Created by Thi-Ngoc-Truc Nguyen and Hoang-Nguyen Vu</p>
-    </div>
-""", unsafe_allow_html=True)
-
-# Sidebar with enhanced styling
+# Sidebar
 with st.sidebar:
-    st.markdown("""
-        <style>
-            .sidebar .sidebar-content {
-                background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
-                padding: 1.5rem;
-                border-radius: 10px;
-            }
-            .sidebar h2 {
-                color: #1e3d59;
-                font-size: 1.5rem;
-                margin-bottom: 1rem;
-                padding-bottom: 0.5rem;
-                border-bottom: 2px solid #0097cc;
-            }
-            .sidebar .stSlider {
-                margin-bottom: 2rem;
-            }
-            [data-testid="stSidebarNav"] {
-                background-image: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
-            }
-        </style>
-    """, unsafe_allow_html=True)
-    
     st.header('Network Architecture')
     hidden_size = st.slider('Hidden Layer Size', 32, 256, 128, 32)
     
