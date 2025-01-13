@@ -74,10 +74,11 @@ def create_network_visualization(input_size, hidden_size, output_size):
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Interactive visualization of Multi-Layer Perceptron (MLP) training on FashionMNIST dataset">
         <meta name="keywords" content="Neural Network, MLP, Deep Learning, FashionMNIST, Interactive Visualization, AI">
-        <meta name="authors" content="Thi-Ngoc-Truc Nguyen, Hoang-Nguyen Vu">
+        <meta name="author" content="Thi-Ngoc-Truc Nguyen, Hoang-Nguyen Vu">
         <meta property="og:title" content="Interactive MLP Training Visualization">
         <meta property="og:description" content="Visualize the training process of a Multi-Layer Perceptron on FashionMNIST dataset">
         <meta property="og:type" content="website">
+        <meta property="og:author" content="Thi-Ngoc-Truc Nguyen, Hoang-Nguyen Vu">
         <title>Interactive MLP Training Visualization</title>
         <style>
             #network-container {{
