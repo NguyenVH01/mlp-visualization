@@ -614,7 +614,10 @@ if st.button('Start Training', key='train_button'):
                     yaxis_title='Loss',
                     showlegend=False,
                     plot_bgcolor='white',
-                    paper_bgcolor='white'
+                    paper_bgcolor='white',
+                    height=400,
+                    margin=dict(t=30, b=40, l=40, r=20),
+                    font=dict(size=14)
                 )
                 loss_plot.plotly_chart(fig_loss, use_container_width=True)
                 
@@ -633,7 +636,10 @@ if st.button('Start Training', key='train_button'):
                     yaxis_title='Accuracy (%)',
                     showlegend=False,
                     plot_bgcolor='white',
-                    paper_bgcolor='white'
+                    paper_bgcolor='white',
+                    height=400,
+                    margin=dict(t=30, b=40, l=40, r=20),
+                    font=dict(size=14)
                 )
                 accuracy_plot.plotly_chart(fig_accuracy, use_container_width=True)
                 
