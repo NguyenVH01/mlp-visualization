@@ -9,6 +9,37 @@ import numpy as np
 import pandas as pd
 import streamlit.components.v1 as components
 
+# Set page config and styling
+st.set_page_config(
+    layout="wide",
+    page_title="MLP Training Visualization",
+    page_icon="🧠",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': None,
+        'Report a bug': None,
+        'About': None
+    }
+)
+
+# Apply custom CSS for theme-aware text colors
+st.markdown("""
+    <style>
+    /* Theme-aware text color */
+    .stMarkdown, .stText, .stCode {
+        color: var(--text-color);
+    }
+    /* Ensure text is visible in light theme */
+    [data-theme="light"] {
+        --text-color: #000000;
+    }
+    /* Ensure text is visible in dark theme */
+    [data-theme="dark"] {
+        --text-color: #FFFFFF;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # Set random seed for reproducibility
 torch.manual_seed(42)
 
@@ -316,19 +347,6 @@ def display_layer_weights(layer, layer_name):
     # Create DataFrame with styling
     df = pd.DataFrame(data, columns=col_labels, index=row_labels)
     return df
-
-# Set page config and styling
-st.set_page_config(
-    layout="wide",
-    page_title="MLP Training Visualization",
-    page_icon="🧠",
-    initial_sidebar_state="expanded",
-    menu_items={
-        'Get Help': None,
-        'Report a bug': None,
-        'About': None
-    }
-)
 
 # Force light theme and professional styling
 st.markdown("""
