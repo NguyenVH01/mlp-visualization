@@ -13,7 +13,8 @@ import streamlit.components.v1 as components
 st.set_page_config(
     layout="wide",
     page_title="MLP Training Visualization",
-    page_icon="🧠"
+    page_icon="🧠",
+    initial_sidebar_state="expanded"
 )
 
 # Set random seed for reproducibility
@@ -324,23 +325,39 @@ def display_layer_weights(layer, layer_name):
     df = pd.DataFrame(data, columns=col_labels, index=row_labels)
     return df
 
-# Title and credits
-st.title('Interactive MLP Training Visualization')
-st.header('FashionMNIST Dataset')
-st.write('Created by Thi-Ngoc-Truc Nguyen and Hoang-Nguyen Vu')
+# Main title with description
+st.title('🧠 Interactive MLP Training Visualization')
+st.markdown("""
+This interactive visualization demonstrates the training process of a Multi-Layer Perceptron (MLP) 
+on the FashionMNIST dataset. You can adjust the network architecture and training parameters 
+to see how they affect the model's performance.
+""")
 
-# Sidebar
+# Authors info in a cleaner format
+st.sidebar.markdown("### 👩‍💻 Authors")
+st.sidebar.markdown("Thi-Ngoc-Truc Nguyen  \nHoang-Nguyen Vu")
+
+# Network parameters in sidebar with descriptions
+st.sidebar.markdown("### 🔧 Model Configuration")
 with st.sidebar:
-    st.header('Network Architecture')
-    hidden_size = st.slider('Hidden Layer Size', 32, 256, 128, 32)
+    st.markdown("#### Network Architecture")
+    st.markdown("Configure the size of the hidden layer in the neural network.")
+    hidden_size = st.slider('Hidden Layer Size', 32, 256, 128, 32,
+                           help="Number of neurons in the hidden layer. A larger size may capture more complex patterns but requires more computation.")
     
-    st.header('Training Parameters')
-    learning_rate = st.slider('Learning Rate', 0.001, 0.01, 0.005, 0.001)
-    batch_size = st.slider('Batch Size', 32, 256, 64, 32)
-    num_epochs = st.slider('Number of Epochs', 1, 20, 5, 1)
+    st.markdown("#### Training Parameters")
+    st.markdown("Fine-tune the learning process of the neural network.")
+    learning_rate = st.slider('Learning Rate', 0.001, 0.01, 0.005, 0.001,
+                             help="Step size for updating model weights. Higher values may learn faster but risk overshooting optimal weights.")
+    batch_size = st.slider('Batch Size', 32, 256, 64, 32,
+                          help="Number of samples processed before updating model weights. Larger batches provide more stable updates but require more memory.")
+    num_epochs = st.slider('Number of Epochs', 1, 20, 5, 1,
+                          help="Number of complete passes through the training dataset.")
 
-# Network Architecture visualization
-st.header('Network Architecture')
+# Network Architecture visualization with description
+st.header('📊 Network Architecture')
+st.markdown("Visual representation of the neural network structure showing input layer (784 nodes), "
+           f"hidden layer ({hidden_size} nodes), and output layer (10 nodes).")
 create_network_visualization(input_size, hidden_size, output_size)
 
 # Load FashionMNIST dataset
@@ -357,24 +374,32 @@ model = MLP(input_size, hidden_size, output_size)
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
+# Training section
+st.header('📈 Training Progress')
+st.markdown("Real-time visualization of the model's training metrics.")
+
 # Create layout for training visualization
-st.header('Training Progress')
 col1, col2 = st.columns(2)
 with col1:
+    st.markdown("#### Loss Over Time")
+    st.markdown("Shows how well the model is learning (lower is better)")
     loss_plot = st.empty()
 with col2:
+    st.markdown("#### Accuracy Over Time")
+    st.markdown("Percentage of correct predictions on training data")
     accuracy_plot = st.empty()
 
 # Create containers for weights visualization
-st.header('Layer Weights')
+st.header('🔍 Layer Weights')
+st.markdown("Visualization of the learned weights in each layer of the network.")
 weight_col1, weight_col2 = st.columns(2)
 with weight_col1:
     st.subheader('Hidden Layer Weights')
-    st.markdown(f'Shape: {model.layer1.weight.shape}')
+    st.markdown(f'Matrix Shape: {model.layer1.weight.shape}')
     hidden_weights = st.empty()
 with weight_col2:
     st.subheader('Output Layer Weights')
-    st.markdown(f'Shape: {model.layer2.weight.shape}')
+    st.markdown(f'Matrix Shape: {model.layer2.weight.shape}')
     output_weights = st.empty()
 
 # Initialize metrics
@@ -382,8 +407,10 @@ losses = []
 accuracies = []
 epochs = []
 
-# Training loop
-if st.button('Start Training', key='train_button'):
+# Training control
+st.markdown("### Training Control")
+st.markdown("Click the button below to start the training process with the selected parameters.")
+if st.button('▶️ Start Training', key='train_button'):
     fig_loss = go.Figure()
     fig_accuracy = go.Figure()
     
@@ -478,14 +505,11 @@ if st.button('Start Training', key='train_button'):
                 
                 # Update status with styled text
                 status_text.markdown(f"""
-                    <div style='padding: 1rem; background-color: #f1f8ff; border-radius: 5px;'>
-                        <strong>Training Status:</strong><br>
-                        Epoch: {epoch+1}/{num_epochs}<br>
-                        Batch: {i+1}/{len(train_loader)}<br>
-                        Loss: {avg_loss:.4f}<br>
-                        Accuracy: {accuracy:.2f}%
-                    </div>
-                """, unsafe_allow_html=True)
+                    Epoch: {epoch+1}/{num_epochs}  
+                    Batch: {i+1}/{len(train_loader)}  
+                    Loss: {avg_loss:.4f}  
+                    Accuracy: {accuracy:.2f}%
+                """)
                 
                 running_loss = 0.0
                 correct = 0
