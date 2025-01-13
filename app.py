@@ -17,6 +17,31 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Custom CSS for authors section
+st.markdown("""
+    <style>
+    .authors-section {
+        border-radius: 8px;
+        background-color: #f0f2f6;
+        margin: 0.5rem 0;
+    }
+    .authors-header {
+        color: #0f52ba;
+        font-size: 1.5rem !important;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+    .author-name {
+        font-size: 1.2rem;
+        color: #262730;
+        margin: 0.3rem 0;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # Set random seed for reproducibility
 torch.manual_seed(42)
 
@@ -333,9 +358,12 @@ on the FashionMNIST dataset. You can adjust the network architecture and trainin
 to see how they affect the model's performance.
 """)
 
-# Authors info in a cleaner format
-st.sidebar.markdown("### 👩‍💻 Authors")
-st.sidebar.markdown("Thi-Ngoc-Truc Nguyen  \nHoang-Nguyen Vu")
+# Authors info with enhanced styling
+st.sidebar.markdown('<div class="authors-section">', unsafe_allow_html=True)
+st.sidebar.markdown('<p class="authors-header">👩‍💻 Authors</p>', unsafe_allow_html=True)
+st.sidebar.markdown('<p class="author-name">Thi-Ngoc-Truc Nguyen</p>', unsafe_allow_html=True)
+st.sidebar.markdown('<p class="author-name">Hoang-Nguyen Vu</p>', unsafe_allow_html=True)
+st.sidebar.markdown('</div>', unsafe_allow_html=True)
 
 # Network parameters in sidebar with descriptions
 st.sidebar.markdown("### 🔧 Model Configuration")
