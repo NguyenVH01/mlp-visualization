@@ -74,11 +74,11 @@ def create_network_visualization(input_size, hidden_size, output_size):
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Interactive visualization of Multi-Layer Perceptron (MLP) training on FashionMNIST dataset">
         <meta name="keywords" content="Neural Network, MLP, Deep Learning, FashionMNIST, Interactive Visualization, AI">
-        <meta name="author" content="Thi-Ngoc-Truc Nguyen, Hoang-Nguyen Vu">
+        <meta name="author" content="Ngọc Trúc, Hoàng Nguyên">
         <meta property="og:title" content="Interactive MLP Training Visualization">
         <meta property="og:description" content="Visualize the training process of a Multi-Layer Perceptron on FashionMNIST dataset">
         <meta property="og:type" content="website">
-        <meta property="og:author" content="Thi-Ngoc-Truc Nguyen, Hoang-Nguyen Vu">
+        <meta property="og:author" content="Ngọc Trúc, Hoàng Nguyên">
         <title>Interactive MLP Training Visualization</title>
         <style>
             #network-container {{
@@ -362,8 +362,8 @@ to see how they affect the model's performance.
 # Authors info with enhanced styling
 st.sidebar.markdown('<div class="authors-section">', unsafe_allow_html=True)
 st.sidebar.markdown('<p class="authors-header">👩‍💻 Authors</p>', unsafe_allow_html=True)
-st.sidebar.markdown('<p class="author-name">Thi-Ngoc-Truc Nguyen</p>', unsafe_allow_html=True)
-st.sidebar.markdown('<p class="author-name">Hoang-Nguyen Vu</p>', unsafe_allow_html=True)
+st.sidebar.markdown('<p class="author-name">Ngọc Trúc</p>', unsafe_allow_html=True)
+st.sidebar.markdown('<p class="author-name">Hoàng Nguyên</p>', unsafe_allow_html=True)
 st.sidebar.markdown('</div>', unsafe_allow_html=True)
 
 # Network parameters in sidebar with descriptions
