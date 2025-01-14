@@ -72,13 +72,25 @@ def create_network_visualization(input_size, hidden_size, output_size):
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Interactive visualization of Multi-Layer Perceptron (MLP) training on FashionMNIST dataset">
-        <meta name="keywords" content="Neural Network, MLP, Deep Learning, FashionMNIST, Interactive Visualization, AI">
+        <meta name="description" content="Interactive visualization of Multi-Layer Perceptron (MLP) training on FashionMNIST dataset with real-time weight updates and network architecture display">
+        <meta name="keywords" content="Neural Network, MLP, Deep Learning, FashionMNIST, Interactive Visualization, AI, Machine Learning, Neural Network Training, Educational Tool">
         <meta name="author" content="Ngọc Trúc, Hoàng Nguyên">
         <meta property="og:title" content="Interactive MLP Training Visualization">
-        <meta property="og:description" content="Visualize the training process of a Multi-Layer Perceptron on FashionMNIST dataset">
+        <meta property="og:description" content="Experience real-time visualization of MLP training on FashionMNIST dataset with dynamic network architecture and weight updates">
         <meta property="og:type" content="website">
-        <meta property="og:author" content="Ngọc Trúc, Hoàng Nguyên">
+        <meta property="og:image" content="https://example.com/mlp-preview.jpg">
+        <meta property="og:url" content="https://example.com/mlp-demo">
+        <meta property="og:site_name" content="MLP Training Visualization">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Interactive MLP Training Visualization">
+        <meta name="twitter:description" content="Experience real-time visualization of MLP training on FashionMNIST dataset">
+        <meta name="twitter:image" content="https://example.com/mlp-preview.jpg">
+        <meta name="robots" content="index, follow">
+        <meta name="theme-color" content="#4a90e2">
+        <meta name="application-name" content="MLP Demo">
+        <meta name="apple-mobile-web-app-title" content="MLP Demo">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <title>Interactive MLP Training Visualization</title>
         <style>
             #network-container {{
